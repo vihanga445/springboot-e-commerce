@@ -6,18 +6,18 @@ public class ProductDto {
     private String name;
     private Double price;
 
-    // No‑args constructor
+
     public ProductDto() {
     }
 
-    // All‑args constructor
+
     public ProductDto(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    // Getters
+
     public Long getId() {
         return id;
     }
@@ -30,7 +30,7 @@ public class ProductDto {
         return price;
     }
 
-    // Setters
+
     public void setId(Long id) {
         this.id = id;
     }

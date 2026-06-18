@@ -16,11 +16,11 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
-    // No‑args constructor
+
     public Product() {
     }
 
-    // All‑args constructor
+
     public Product(Long id, String name, Double price) {
         this.id = id;
         this.name = name;

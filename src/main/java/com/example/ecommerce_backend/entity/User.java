@@ -19,11 +19,11 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    // No‑args constructor
+
     public User() {
     }
 
-    // All‑args constructor
+
     public User(Long id, String email, String password, String name) {
         this.id = id;
         this.email = email;
@@ -31,7 +31,7 @@ public class User {
         this.name = name;
     }
 
-    // Getters
+
     public Long getId() {
         return id;
     }
@@ -48,7 +48,7 @@ public class User {
         return name;
     }
 
-    // Setters
+
     public void setId(Long id) {
         this.id = id;
     }

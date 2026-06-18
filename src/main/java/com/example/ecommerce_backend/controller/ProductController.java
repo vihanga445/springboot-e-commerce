@@ -18,14 +18,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // Save product
+
     @PostMapping("/save")
     public ResponseEntity<Product> saveProduct(@RequestBody ProductDto productDto) {
         Product savedProduct = productService.saveProduct(productDto);
         return ResponseEntity.ok(savedProduct);
     }
 
-    // Get all products
+
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();

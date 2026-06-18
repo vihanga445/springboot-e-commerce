@@ -4,6 +4,7 @@ import com.example.ecommerce_backend.dto.UserDto;
 import com.example.ecommerce_backend.entity.User;
 import com.example.ecommerce_backend.repository.UserRepository;
 import com.example.ecommerce_backend.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -24,11 +27,14 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Email already exists");
         }
 
-        // Manual conversion (no mapper)
+
         User user = new User();
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
+
+
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         return userRepository.save(user);
     }
