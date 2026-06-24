@@ -30,6 +30,7 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
+    // extract claims from the jwt
     public <T> T extractClaim(String token, Function<Claims, T> resolver) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -51,11 +52,13 @@ public class JwtService {
                 .compact();
     }
 
+    // to check weather the token is valid or not
     public boolean isTokenValid(String token, UserDetails userDetails) {
         String username = extractUsername(token);
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
+    // checking the expiration date of the token
     private boolean isTokenExpired(String token) {
         Date exp = extractClaim(token, Claims::getExpiration);
         return exp.before(new Date());

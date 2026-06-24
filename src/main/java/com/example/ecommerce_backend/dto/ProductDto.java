@@ -42,4 +42,6 @@ public class ProductDto {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+
 }
